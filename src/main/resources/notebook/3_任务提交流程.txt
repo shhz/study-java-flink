@@ -1,0 +1,19 @@
+任务提交流程
+    1.App -> Dispacher
+        提交应用
+    2.Dispacher -> JobManager
+        启动并提交应用
+    3.JobManager -> ResourceManager
+        请求 slots
+    4.ResourceManager -> TaskManager
+        启动
+    5.TaskManager -> ResourceManager
+        注册 slots
+    6.ResourceManager -> TaskManager
+        发出提供 slot 的指令
+    7.TaskManager -> JobManager
+        提供 slots
+    8.JobManager -> TaskManager
+        提交要在 slots 中执行的任务
+    9.TaskManager -> TaskManager
+        交换数据

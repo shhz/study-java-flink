@@ -1,0 +1,24 @@
+flink文件指令：
+    ./bin/flink list
+    查看执行的job列表 可以添加‘-a’参数查所有状态的job
+    ./bin/flink cancel 'jobID'
+    关闭job任务
+
+session模式启动指令
+    ./bin/yarn-session.sh -n 2 -s 2 -jm 1024 -tm 1024 -nm test -d
+        -n(--container)：taskManger 的数量。
+        -s(--slots): 每个 taskManger 的 slot 数量，默认一个 slot 一个 core，默认每个 taskManger 的 slot 的个数为1，有时可以多一些 taskManger 做冗余。
+        -jm: JobManger 的内存（单位MB）。
+        -tm: 每个 taskManger 的内存（单位MB）。
+        -nm: yarn 的 appName （现在 yarn 的 ui 上的名字）。
+        -d: 后台执行。
+
+执行任务
+    ./flink run -c 入口类的全路径名 上传任务jar包的文件名 --host localhost --port 7777
+
+取消 yarn-session 模式
+    yarn application --kill application_12312313112123_0001
+
+per jon 模式直接执行job
+    ./flink run -m yarn-cluster -c 入口类的全路径名 上传任务jar包的文件名 --host localhost --port 7777
+
