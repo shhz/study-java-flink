@@ -17,3 +17,10 @@
         提交要在 slots 中执行的任务
     9.TaskManager -> TaskManager
         交换数据
+
+任务提交流程（YAEN）
+    1.Flink 链接（FlinkClient）上传Jar包和配置
+    2.Flink 链接提交 Job 到 YAEN 的资源管理器（ResourceManager）
+    3.YAEN 的资源管理器启动某一节点（NodeManager）的 ApplicationMaster（其中有 JobManager 和该 JobManager 的资源管理器）
+    4.JobManager 向 YARN 的资源管理器申请资源
+    5.启动所需的节点（NodeManager）的 TaskManager

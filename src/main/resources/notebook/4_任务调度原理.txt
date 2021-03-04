@@ -1,0 +1,5 @@
+任务调度原理
+
+1.编辑的 jar 包能够生成一个确定的数据流图，提交 job 时会提交数据流图；
+2.JobManager 基于数据流图分发任务给 TaskManager，JobManager 也会控制保存点的功能；
+3.单个或多个 TaskManager 按照数据流进行对数据的工作。

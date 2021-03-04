@@ -14,8 +14,11 @@ public class FileWordCount {
     public static void main(String[] args) throws Exception{
         // 建立环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        // 设定此任务为 4 solt
+        // 并行度为同一时刻同步进行的数量（线程数），也决定了该步骤需要多少 slot
+        // 设定此任务为 4 并行度
         env.setParallelism(4);
+
+        // slot 是内存分区，每一个 slot 是独立的内存资源，但是可以有通一个任务的多个算子（任务步骤）
 
         // 文件读取数据
         String filePath = "D:\\data\\gitStudyData\\study_java_flink\\src\\main\\resources\\words";
@@ -25,7 +28,7 @@ public class FileWordCount {
         DataStream<Tuple2<String, Integer>> sum = dataStream.flatMap(new StringCountFlatMapFunction())
                 .keyBy(0)
                 .sum(1)
-                .setParallelism(8); // 设定此步骤为 8 solt
+                .setParallelism(8); // 设定此算子（步骤）为 8 并行度
 
         // 统计结果输出到控制台
         sum.print();
