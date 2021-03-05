@@ -1,6 +1,6 @@
 package com.study.wc;
 
-import com.study.util.StringCountFlatMapFunction;
+import com.study.map.function.StringCountFlatMapFunction;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.tuple.Tuple2;
