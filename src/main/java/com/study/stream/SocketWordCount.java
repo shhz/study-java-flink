@@ -1,6 +1,6 @@
 package com.study.stream;
 
-import com.study.util.StringCountFlatMapFunction;
+import com.study.map.function.StringCountFlatMapFunction;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
