@@ -1,6 +1,9 @@
 .git/
 .idea/
 
+src/main/resources/flink-1.12.1-bin-scala_2.12.tgz
+src/main/resources/flink-1.12.1/
+
 # Compiled class file
 *.class
 
