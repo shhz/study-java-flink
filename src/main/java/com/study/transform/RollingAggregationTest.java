@@ -34,7 +34,7 @@ public class RollingAggregationTest {
 //        KeyedStream<CollectionSourceBean, Tuple> keyedStream = dataStream.keyBy("id");
         KeyedStream<CollectionSourceBean, String> keyedStream = dataStream.keyBy(CollectionSourceBean::getId);
 
-        // 滚动聚合
+        // 滚动聚合，如果比较后原数据较大则会再一次输出原数据
         // max 只更新取最大值的字段
         DataStream<CollectionSourceBean> resultMaxStream = keyedStream.max("temperature");
         // maxBy 更新整行
