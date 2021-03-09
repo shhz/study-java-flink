@@ -8,10 +8,10 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
  * @author shsq
- * @description: AggregationTest 滚动聚合算子测试
+ * @description: TransfromTest2_RollingAggregation 滚动聚合算子测试
  * @date 2021/3/5 15:49
  */
-public class RollingAggregationTest {
+public class TransfromTest2_RollingAggregation {
     public static void main(String[] args) throws Exception {
         // 建立环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

@@ -2,18 +2,16 @@ package com.study.transform;
 
 import com.study.beans.CollectionSourceBean;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
-import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
  * @author shsq
- * @description: ReduceTransfromTest 聚合测试
+ * @description: TransfromTest3_Reduce 聚合测试
  * @date 2021/3/5 16:35
  */
-public class ReduceTest {
+public class TransfromTest3_Reduce {
     public static void main(String[] args) throws Exception {
         // 建立环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

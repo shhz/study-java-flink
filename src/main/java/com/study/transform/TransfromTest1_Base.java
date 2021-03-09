@@ -9,10 +9,10 @@ import org.apache.flink.util.Collector;
 
 /**
  * @author shsq
- * @description: TransfromTest 基本转换算子测试
+ * @description: TransfromTest1_Base 基本转换算子测试
  * @date 2021/3/5 15:33
  */
-public class TransfromTest {
+public class TransfromTest1_Base {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
