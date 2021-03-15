@@ -21,11 +21,29 @@
             <artifactId>flink-streaming-java_2.12</artifactId>
             <version>1.10.1</version>
         </dependency>
-        <!-- Flink 对 Kafka 数据源的支持 -->
+        <!-- Flink 对 Kafka 的支持 -->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-kafka-0.11_2.12</artifactId>
             <version>1.10.1</version>
+        </dependency>
+        <!-- Flink 对 Redis 的支持 -->
+        <dependency>
+            <groupId>org.apache.bahir</groupId>
+            <artifactId>flink-connector-redis_2.11</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!-- Flink 对 es 的支持 -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-elasticsearch6_2.12</artifactId>
+            <version>1.12.2</version>
+        </dependency>
+        <!-- mysql 连接器 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
         </dependency>
     </dependencies>
 
