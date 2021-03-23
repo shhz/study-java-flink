@@ -1,12 +1,17 @@
 package com.study.window;
 
 import com.study.beans.CollectionSourceBean;
+import org.apache.commons.collections.IteratorUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
+import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
+import org.apache.flink.util.Collector;
 
 /**
  * @author shsq
@@ -37,8 +42,23 @@ public class WindowTest2_CountWindows {
                 .countWindow(10, 2)
                 .aggregate(new MyAvgTemp());
 
+        // 全窗口聚合
+        SingleOutputStreamOperator<Tuple3<String, String, Integer>> avgResultStream2 =
+                dataStream.keyBy(CollectionSourceBean::getId)
+                .countWindow(10, 2)
+                .apply(new WindowFunction<CollectionSourceBean, Tuple3<String, String, Integer>, String, GlobalWindow>() {
+                    @Override
+                    public void apply(String id, GlobalWindow window,
+                                      Iterable<CollectionSourceBean> input, Collector<Tuple3<String, String, Integer>> out) throws Exception {
+                        String windowString = window.toString() + "_" + window.hashCode();
+                        Integer count = IteratorUtils.toList(input.iterator()).size();
+                        out.collect(new Tuple3<>(id, windowString, count));
+                    }
+                });
+
         // 打印
-        avgResultStream.print();
+        avgResultStream.print("avgResultStream");
+        avgResultStream2.print("avgResultStream2");
 
         // 执行
         env.execute();
